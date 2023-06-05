@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1DAD4D57-BCC1-4F53-957E-D413D416403F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DF94DAFF-8976-4435-97CE-66E0FBB33AB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartmoreTemplatesLambda", "src\ChartmoreTemplatesLambda\ChartmoreTemplatesLambda.csproj", "{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartmoreTemplatesLambda.Application", "src\ChartmoreTemplatesLambda.Application\ChartmoreTemplatesLambda.Application.csproj", "{3EC19096-93FB-4CE5-95F9-408E27A1C5BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartmoreTemplates.Lambda.Tests.Unit", "test\ChartmoreTemplates.Lambda.Tests.Unit\ChartmoreTemplates.Lambda.Tests.Unit.csproj", "{98FE92B6-3F1B-4C84-9366-789BEB5F4818}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6} = {1DAD4D57-BCC1-4F53-957E-D413D416403F}
+		{3EC19096-93FB-4CE5-95F9-408E27A1C5BA} = {1DAD4D57-BCC1-4F53-957E-D413D416403F}
+		{98FE92B6-3F1B-4C84-9366-789BEB5F4818} = {DF94DAFF-8976-4435-97CE-66E0FBB33AB0}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39FD6F52-FCA9-491B-88BA-D9AB3EBEDAE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EC19096-93FB-4CE5-95F9-408E27A1C5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EC19096-93FB-4CE5-95F9-408E27A1C5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EC19096-93FB-4CE5-95F9-408E27A1C5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EC19096-93FB-4CE5-95F9-408E27A1C5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FE92B6-3F1B-4C84-9366-789BEB5F4818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FE92B6-3F1B-4C84-9366-789BEB5F4818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FE92B6-3F1B-4C84-9366-789BEB5F4818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FE92B6-3F1B-4C84-9366-789BEB5F4818}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
