@@ -43,8 +43,7 @@ public class RunnerTests
         {
             ServiceURL = "http://localhost:3001"
         });
-
-
+        
         var payload = GetPayloadFromJsonFile();
 
         var response = await client.InvokeAsync(new InvokeRequest
