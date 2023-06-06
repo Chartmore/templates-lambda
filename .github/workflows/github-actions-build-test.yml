@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
         env:
-          AZUREDEVOPS_USERNAME: ${{ vars.AZUREDEVOPS_USERNAME }}
-          AZUREDEVOPS_PASSWORD: ${{ vars.AZUREDEVOPS_PASSWORD }}
+          AZUREDEVOPS_USERNAME: ${{ secrets.AZUREDEVOPS_USERNAME }}
+          AZUREDEVOPS_PASSWORD: ${{ secrets.AZUREDEVOPS_PASSWORD }}
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Test
