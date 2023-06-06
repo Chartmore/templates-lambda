@@ -7,11 +7,13 @@ Resources:
     Properties:
       CodeUri: ./src/ChartmoreTemplatesLambda/
       Handler: ChartmoreTemplatesLambda::ChartmoreTemplatesLambda.Function::FunctionHandler
-      Runtime: dotnet6
+      Runtime: provided.al2
       Architectures:
         - x86_64
       MemorySize: 256
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           PARAM1: VALUE
+    Metadata:
+      BuildMethod: dotnet7
 
