@@ -1,10 +1,27 @@
-﻿namespace ChartmoreTemplatesLambda.Application;
+﻿using Chartmore.Core;
+using Chartmore.Core.Entities;
+
+namespace ChartmoreTemplatesLambda.Application;
 
 public class Runner : IRunner
 {
-    public Task RunAsync()
+    private readonly IChartmoreContext _chartmoreContext;
+
+    public Runner(IChartmoreContext chartmoreContext)
     {
-        throw new NotImplementedException("custom error");
+        _chartmoreContext = chartmoreContext;
+    }
+
+    public async Task RunAsync()
+    {
+        Console.WriteLine("fucky wucky");
+        
+        await _chartmoreContext.Scans.AddAsync(new Scan
+        {
+            Id = Guid.NewGuid().ToString(),
+        });
+
+        await _chartmoreContext.SaveChangesAsync(CancellationToken.None);
     }
 }
 

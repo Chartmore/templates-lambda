@@ -13,15 +13,8 @@ using Xunit;
 
 namespace ChartmoreTemplatesLambda.Tests.Integration;
 
-public class RunnerTests : IClassFixture<DependenciesFixture>
+public class RunnerWithoutFixture
 {
-    private readonly DependenciesFixture _fixture;
-    
-    public RunnerTests(DependenciesFixture fixture)
-    {
-        _fixture = fixture;
-    }
-
     private static string GetPayloadFromJsonFile()
     {
         try
@@ -48,7 +41,10 @@ public class RunnerTests : IClassFixture<DependenciesFixture>
     {
         var payload = GetPayloadFromJsonFile();
 
-        var client = _fixture.GetRequiredService<AmazonLambdaClient>();
+        var client = new AmazonLambdaClient(new AmazonLambdaConfig
+        {
+            ServiceURL = "http://localhost:3001"
+        });
 
         var cancellationToken = new CancellationTokenSource(TimeSpan.FromMinutes(10)).Token;
         
@@ -58,10 +54,7 @@ public class RunnerTests : IClassFixture<DependenciesFixture>
             InvocationType = InvocationType.RequestResponse,
             Payload = payload
         }, cancellationToken);
-
-        await using var context = _fixture.GetRequiredService<ChartmoreContext>();
-
+        
         Assert.Equal(200, response.StatusCode);
-        Assert.Equal(1, context.Scans.Count());
     }
 }

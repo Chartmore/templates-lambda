@@ -13,5 +13,8 @@ Note: Local invocations use the event json from `./events/event.json`, so update
 
 1. Install AWS [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
 2. Ensure docker is running locally
-3. From the repository root, run `sam local start-lambda`
-4. Once complete, run the integration tests from rider
+3. Once complete, run the integration tests from rider
+
+## Still to do:
+1. Correctly call lambda from integration tests so that errors within the function bubble up to the test
+2. Configure all this to run in CI pipepline

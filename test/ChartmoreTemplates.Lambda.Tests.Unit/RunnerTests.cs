@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using Chartmore.Core;
 using ChartmoreTemplatesLambda.Application;
+using Moq;
 using Xunit;
 
 namespace ChartmoreTemplates.Lambda.Tests.Unit;
@@ -11,7 +13,7 @@ public class RunnerTests
     
     public RunnerTests()
     {
-        _sut = new Runner();
+        _sut = new Runner(new Mock<IChartmoreContext>().Object);
     }
     
     [Fact]
