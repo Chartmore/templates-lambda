@@ -14,8 +14,6 @@ public class Runner : IRunner
 
     public async Task RunAsync()
     {
-        Console.WriteLine("fucky wucky");
-        
         await _chartmoreContext.Scans.AddAsync(new Scan
         {
             Id = Guid.NewGuid().ToString(),

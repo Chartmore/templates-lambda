@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Amazon.Lambda.CloudWatchEvents;
 using Amazon.Lambda.Core;
+using Chartmore.Infrastructure;
 using ChartmoreTemplatesLambda.Application;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,8 @@ namespace ChartmoreTemplatesLambda;
 
 public class Function
 {
+    public const string Name = "ChartmoreTemplatesLambda";
+    
     public async Task FunctionHandler(CloudWatchEvent<object> _)
     {
         using var host = CreateHostBuilder().Build();
@@ -28,10 +31,13 @@ public class Function
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration((_, config) =>
             {
-                config.AddEnvironmentVariables("ChartmoreTemplatesLambda_");
+                config.AddEnvironmentVariables($"{Name}_");
             })
             .ConfigureServices((hostContext, services) =>
             {
+                var connectionString = hostContext.Configuration.GetConnectionString("AppConnection");
+                
                 services.AddSingleton<IRunner, Runner>();
+                services.AddChartmoreContext(connectionString);
             });
 }
