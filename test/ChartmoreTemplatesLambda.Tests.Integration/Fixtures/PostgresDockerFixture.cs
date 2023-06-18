@@ -4,6 +4,8 @@ using Ductus.FluentDocker.Builders;
 using Ductus.FluentDocker.Services;
 using Ductus.FluentDocker.Services.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
+using Polly;
 
 namespace ChartmoreTemplatesLambda.Tests.Integration.Fixtures;
 
@@ -29,11 +31,16 @@ public class PostgresDockerFixture : IDisposable
         var containerEndpoint = container.ToHostExposedEndpoint("5432/tcp"); 
         ConnectionString = $"Host=localhost;Port={containerEndpoint.Port};Database={database};User Id={username};Password={password};";
 
-        using var context = new ChartmoreContext(new DbContextOptionsBuilder<ChartmoreContext>()
-            .UseNpgsql(ConnectionString)
-            .Options);
+        Policy.Handle<NpgsqlException>()
+            .WaitAndRetry(2, retryNum => retryNum * TimeSpan.FromMilliseconds(500))
+            .Execute(() =>
+            {
+                using var context = new ChartmoreContext(new DbContextOptionsBuilder<ChartmoreContext>()
+                    .UseNpgsql(ConnectionString)
+                    .Options);
 
-        context.Database.EnsureCreated();
+                context.Database.EnsureCreated();
+            });
     }
 
     public void Dispose()

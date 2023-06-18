@@ -51,7 +51,7 @@ public class RunnerTests : IClassFixture<DependenciesFixture>
         var client = _fixture.GetRequiredService<AmazonLambdaClient>();
 
         var cancellationToken = new CancellationTokenSource(TimeSpan.FromMinutes(10)).Token;
-        
+
         var response = await client.InvokeAsync(new InvokeRequest
         {
             FunctionName = "ChartmoreTemplatesLambdaFunction",
