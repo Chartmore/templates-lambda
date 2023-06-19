@@ -1,8 +1,13 @@
 name: dotnet build and test
 
+#on:
+#  pull_request:
+#    types: [closed]
+
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - main
 
 jobs:
   build-test:
