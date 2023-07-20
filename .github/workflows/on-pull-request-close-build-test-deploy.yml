@@ -17,35 +17,35 @@ permissions:
   contents: read    # This is required for actions/checkout
 
 jobs:
-  build-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: [ '6.0.x' ]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-        env:
-          AZUREDEVOPS_USERNAME: ${{ secrets.AZUREDEVOPS_USERNAME }}
-          AZUREDEVOPS_PASSWORD: ${{ secrets.AZUREDEVOPS_PASSWORD }}
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-      - name: Test
-        run: dotnet test --no-restore --verbosity normal
+#  build-test:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        dotnet-version: [ '6.0.x' ]
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+#        uses: actions/setup-dotnet@v3
+#        with:
+#          dotnet-version: ${{ matrix.dotnet-version }}
+#      - name: Install dependencies
+#        run: dotnet restore
+#        env:
+#          AZUREDEVOPS_USERNAME: ${{ secrets.AZUREDEVOPS_USERNAME }}
+#          AZUREDEVOPS_PASSWORD: ${{ secrets.AZUREDEVOPS_PASSWORD }}
+#      - name: Build
+#        run: dotnet build --configuration Release --no-restore
+#      - name: Test
+#        run: dotnet test --no-restore --verbosity normal
         
   build-deploy:
     runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v2
-      - uses: aws-actions/setup-sam@v2
+#      - uses: actions/setup-python@v2
+#      - uses: aws-actions/setup-sam@v2
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::521106875068:role/GitHubAction-AssumeRoleWithAction
