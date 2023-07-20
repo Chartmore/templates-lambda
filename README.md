@@ -15,7 +15,7 @@ Note: Local invocations use the event json from `./events/event.json`, so update
 2. Ensure docker is running locally
 3. From the root of this repository, run `sam build`
 4. Once complete, run the integration tests from rider
- 
+
 ## Still to do:
 1. Correctly call lambda from integration tests so that errors within the function bubble up to the test
 2. Configure all this to run in CI pipeline
